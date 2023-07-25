@@ -6,11 +6,11 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 07:33:50 by bena              #+#    #+#             */
-/*   Updated: 2023/07/10 08:08:36 by bena             ###   ########.fr       */
+/*   Updated: 2023/07/25 14:34:39 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hash.h"
+#include "s_hash.h"
 
 unsigned int	djb2(const char *str, unsigned int bucket_size)
 {

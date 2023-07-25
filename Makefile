@@ -6,43 +6,26 @@ ARFLAGS	= crs
 CFLAGS	= -g -Wall -Wextra -Werror
 
 NAME	= testhashmap
-INCLUDE	= includes/
-
-
-
-#libraries=====================================================================
-
-LIBS	= libft
-B_LIBS	= libft_bonus
-ARCH	= ft
-B_ARCH	= ft_bonus
-
-LIBFT	= libft/libft.a
-LIBFT_B	= libft_bonus/libft_bonus.a
 
 
 
 #sources=======================================================================
 
-SRCS	= test.c \
-		  hashmap/addkey.c \
-		  hashmap/djb2.c \
-		  hashmap/extend_hashtable.c \
-		  hashmap/ft_strcmp.c \
-		  hashmap/get.c \
-		  hashmap/init_hashtable.c \
-		  hashmap/remove_hashtable.c \
-		  hashmap/removekey.c
+SRCS	=	test.c \
+			hashmap/addkey.c \
+			hashmap/djb2.c \
+			hashmap/extend_hashtable.c \
+			hashmap/get.c \
+			hashmap/hash_memset.c \
+			hashmap/hash_strcmp.c \
+			hashmap/hash_strdup.c \
+			hashmap/init_hashtable.c \
+			hashmap/remove_hashtable.c \
+			hashmap/removekey.c
 
 OBJS	= $(SRCS:.c=.o)
 
-
-
-
-	TARGET_OBJS = $(OBJS)
-	TARGET_LIB = $(LIBFT)
-	TARGET_LIBS = $(LIBS)
-	TARGET_ARCH = $(ARCH)
+TARGET_OBJS = $(OBJS)
 
 #rules=========================================================================
 
@@ -50,24 +33,16 @@ OBJS	= $(SRCS:.c=.o)
 all :
 	make $(NAME)
 
-$(NAME) : $(TARGET_LIB) $(TARGET_OBJS)
-	$(CC) -o $@ $(TARGET_OBJS) $(foreach lib, $(TARGET_LIBS), -L$(lib)) $(foreach arch, $(TARGET_ARCH), -l$(arch))
-
-
-$(LIBFT) :
-	make -C libft
-
-
-
+$(NAME) : $(TARGET_OBJS)
+	$(CC) -o $@ $(TARGET_OBJS)
 
 #const options=================================================================
 
 %.o : %.c
-	$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: clean
 clean :
-	$(foreach lib, $(LIBS), make fclean -C $(lib);)
 	rm -f $(OBJS)
 
 .PHONY: fclean

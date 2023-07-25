@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   hash_strcmp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 18:10:25 by bena              #+#    #+#             */
-/*   Updated: 2022/11/14 18:18:22 by bena             ###   ########.fr       */
+/*   Created: 2022/08/30 15:37:09 by bena              #+#    #+#             */
+/*   Updated: 2023/07/25 14:19:12 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+int	hash_strcmp(char *s1, char *s2)
 {
-	if ('0' <= c && c <= '9')
-		return (c);
+	unsigned char	*c1;
+	unsigned char	*c2;
+
+	c1 = (unsigned char *)s1;
+	c2 = (unsigned char *)s2;
+	while (*c1 || *c2)
+	{
+		if (*c1 != *c2)
+			return (*c1 - *c2);
+		c1++;
+		c2++;
+	}
 	return (0);
 }

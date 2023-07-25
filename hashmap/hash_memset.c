@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   hash_memset.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 20:12:08 by bena              #+#    #+#             */
-/*   Updated: 2022/11/22 20:27:42 by bena             ###   ########.fr       */
+/*   Created: 2022/11/14 19:31:33 by bena              #+#    #+#             */
+/*   Updated: 2023/07/25 14:09:03 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strrchr(const char *s, int c)
+void	*hash_memset(void *b, int c, unsigned int len)
 {
-	char	*s_memory;
-	char	ch;
+	unsigned char	*address;
+	unsigned char	value;
 
-	ch = c;
-	s_memory = 0;
-	while (*s)
-		if (*s++ == ch)
-			s_memory = (char *)s - 1;
-	if (ch == 0)
-		return ((char *)s);
-	return (s_memory);
+	value = (unsigned char)c;
+	address = (unsigned char *)b;
+	while (len--)
+		*address++ = value;
+	return (b);
 }
